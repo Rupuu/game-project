@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Button, SimpleGrid, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import InstructionContent from "../components/InstructionContent";
 
 // Reusable component for displaying instructions
@@ -8,7 +8,7 @@ function HelpPage() {
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
 
   return (
-    <VStack spacing={4}>
+    <VStack spacing={4} borderWidth="10px" borderBottom="0px" p={10}>
       <SimpleGrid columns={3} spacing={10}>
         <Button
           colorScheme="blue"
@@ -51,19 +51,19 @@ function HelpPage() {
             <Text fontSize="xl">Select Payment Method for {selectedFuel}</Text>
             <SimpleGrid columns={3} spacing={10}>
               <Button
-                colorScheme="green"
+                colorScheme="blue"
                 onClick={() => setSelectedPayment("Credit Card")}
               >
                 Credit Card
               </Button>
               <Button
-                colorScheme="green"
+                colorScheme="blue"
                 onClick={() => setSelectedPayment("Debit Card")}
               >
                 Debit Card
               </Button>
               <Button
-                colorScheme="green"
+                colorScheme="blue"
                 onClick={() => setSelectedPayment("Cash")}
               >
                 Cash

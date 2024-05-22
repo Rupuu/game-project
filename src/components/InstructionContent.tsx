@@ -10,10 +10,9 @@ function InstructionContent({ selectedOption, text, videoSource }: Props) {
   return (
     <Box
       margin={4}
-      shadow="1px 1px 4px 1px"
       p={4}
       minW="30px"
-      maxW="500px"
+      maxW="600px"
       borderWidth="2px"
       borderRadius="lg"
     >

@@ -3,8 +3,8 @@ import logo from "../assets/RedloryLogo-Small.webp";
 
 const Navbar = () => {
   return (
-    <HStack padding="2px">
-      <Image src={logo} boxSize="60px"></Image>
+    <HStack borderTop="0px" borderBottom="0px" borderWidth="10px">
+      <Image src={logo} boxSize="100px"></Image>
       <Text>Redlory</Text>
     </HStack>
   );
