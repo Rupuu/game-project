@@ -1,27 +1,30 @@
-import { Box, Text, Image } from "@chakra-ui/react";
+import { Box, Text, Image, UnorderedList } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
 interface Props {
   selectedOption: string;
-  text: string;
+  children: ReactNode;
   videoSource: string;
 }
 
-function InstructionContent({ selectedOption, text, videoSource }: Props) {
+function InstructionContent({ selectedOption, children, videoSource }: Props) {
   return (
     <Box
       margin={4}
       p={4}
-      minW="30px"
-      maxW="600px"
+      minW={{ base: "220px", md: "300px", lg: "400px" }}
+      maxW={{ base: "230px", md: "400px", lg: "600px" }}
       borderWidth="2px"
       borderRadius="lg"
     >
-      <Text fontSize="xl">How to use {selectedOption}</Text>
+      <Text color={"#0099ff"} fontSize="xl">
+        How to use {selectedOption}
+      </Text>
       <Box mt={2}>
         <Image src={videoSource} alt="Video Placeholder" />
       </Box>
       <Box mt={2}>
-        <Text>{text}</Text>
+        <UnorderedList>{children}</UnorderedList>
       </Box>
     </Box>
   );
