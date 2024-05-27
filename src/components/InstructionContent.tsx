@@ -2,12 +2,12 @@ import { Box, Text, Image, UnorderedList } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface Props {
-  selectedOption: string;
+  title: string;
   children: ReactNode;
   videoSource: string;
 }
 
-function InstructionContent({ selectedOption, children, videoSource }: Props) {
+function InstructionContent({ title, children, videoSource }: Props) {
   return (
     <Box
       margin={4}
@@ -18,7 +18,7 @@ function InstructionContent({ selectedOption, children, videoSource }: Props) {
       borderRadius="lg"
     >
       <Text color={"#0099ff"} fontSize="xl">
-        How to use {selectedOption}
+        {title}
       </Text>
       <Box mt={2}>
         <Image src={videoSource} alt="Video Placeholder" />

@@ -1,5 +1,6 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../assets/RedloryLogo-Small.webp";
+import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
   return (
@@ -9,6 +10,7 @@ const Navbar = () => {
     >
       <Image src={logo} boxSize={{ base: "90px", lg: "125px" }}></Image>
       <Text>Redlory</Text>
+      <LanguageSelector />
     </HStack>
   );
 };

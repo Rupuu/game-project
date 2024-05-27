@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
+  Heading,
   Image,
   ListItem,
   SimpleGrid,
@@ -10,22 +12,26 @@ import {
 } from "@chakra-ui/react";
 import InstructionContent from "../components/InstructionContent";
 
-// Reusable component for displaying instructions
 function HelpPage() {
   const [selectedFuel, setSelectedFuel] = useState<string | null>(null);
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
 
+  const { t } = useTranslation();
+  const { greeting, information, instructions }: any = t("helpPage");
+  const { step1, step2, step3, cardInfo } = instructions;
+  const { title, description1, description2 } = cardInfo;
+
   return (
     <VStack spacing={4} borderWidth="10px" borderBottom="0px" p={10}>
-      <Text textAlign="center" as="b" fontSize="3xl">
-        Welcome to the help page!
-      </Text>
+      <Heading textAlign="center" as="b" fontSize="3xl">
+        {greeting}
+      </Heading>
       <Text textAlign="left" as="i" fontSize="lg" color="red">
-        Here you can find all the information you need on how to use the device
+        {information}
       </Text>
       <Box mt={4}>
         <Text as="b" fontSize="xl">
-          1. Choose one of the avaliable gas stations from 1-4.
+          {step1.title}
         </Text>
         <Image
           mt={10}
@@ -35,7 +41,7 @@ function HelpPage() {
       </Box>
       <Box mt={4}>
         <Text as="b" fontSize="xl">
-          2. Please select one of the following options:
+          {step2.title}
         </Text>
         <SimpleGrid mt={10} columns={3} spacing={{ base: "10px", lg: "100px" }}>
           <Button
@@ -68,17 +74,16 @@ function HelpPage() {
       {selectedFuel && (
         <>
           <InstructionContent
-            selectedOption={selectedFuel}
+            title={title + " " + selectedFuel}
             videoSource="https://via.placeholder.com/150"
           >
-            <ListItem>Do this</ListItem>
-            <ListItem>Do that</ListItem>
-            <ListItem>Do there</ListItem>
-            <ListItem>Do where</ListItem>
+            <ListItem>{description1.step1}</ListItem>
+            <ListItem>{description1.step2}</ListItem>
+            <ListItem>{description1.step3}</ListItem>
           </InstructionContent>
           <Box mt={4}>
             <Text as="b" fontSize="xl">
-              3. Select Payment Method for {selectedFuel}
+              {step3.title + " " + selectedFuel}
             </Text>
             <SimpleGrid
               mt={10}
@@ -119,13 +124,12 @@ function HelpPage() {
 
       {selectedPayment && (
         <InstructionContent
-          selectedOption={selectedPayment}
+          title={title + " " + selectedPayment}
           videoSource="https://via.placeholder.com/150"
         >
-          <ListItem>
-            Do
-            thisssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-          </ListItem>
+          <ListItem>{description2.step1}</ListItem>
+          <ListItem>{description2.step2}</ListItem>
+          <ListItem>{description2.step3}</ListItem>
         </InstructionContent>
       )}
     </VStack>
