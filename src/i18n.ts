@@ -44,7 +44,7 @@ i18next.use(LanguageDetector).use(initReactI18next).init({
             translation:{
                 helpPage:{
                     greeting: "Добре дошли на помощната страница!",
-                    information: "Тук можете да намерите всички информация за как да използвате устройствато",
+                    information: "Тук можете да намерите цялата информация за как да използвате устройствато",
                     instructions:{
                         step1: {
                             title: "1. Изберете една от свободните станции от 1-4.",
