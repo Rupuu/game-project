@@ -22,116 +22,137 @@ function HelpPage() {
   const { title, description1, description2 } = cardInfo;
 
   return (
-    <VStack spacing={4} borderWidth="10px" borderBottom="0px" p={10}>
-      <Heading textAlign="center" as="b" fontSize="3xl">
-        {greeting}
-      </Heading>
-      <Text textAlign="left" as="i" fontSize="lg" color="red">
-        {information}
-      </Text>
-      <Box mt={4}>
-        <Text as="b" fontSize="xl">
-          {step1.title}
+    <VStack
+      spacing={4}
+      borderWidth="10px"
+      borderBottom="0px"
+      p={10}
+      backgroundColor={"#f5f5fre"}
+    >
+      <SimpleGrid>
+        <Heading
+          textAlign="center"
+          as="b"
+          fontSize="3xl"
+          m={{ base: "30px", md: "40px", lg: "50px" }}
+        >
+          {greeting}
+        </Heading>
+        <Text textAlign="left" as="i" fontSize="lg" color="red">
+          {information}
         </Text>
-        <Image
-          mt={10}
-          src="https://via.placeholder.com/150"
-          alt="Video Placeholder"
-        />
-      </Box>
-      <Box mt={4}>
-        <Text as="b" fontSize="xl">
-          {step2.title}
-        </Text>
-        <SimpleGrid mt={10} columns={3} spacing={{ base: "10px", lg: "100px" }}>
-          <Button
-            colorScheme="blue"
-            onClick={() => {
-              setSelectedFuel("Gas");
-            }}
+        <Box mt={10}>
+          <Text as="b" fontSize="xl">
+            {step1.title}
+          </Text>
+          <Image
+            mt={10}
+            src="https://via.placeholder.com/150"
+            alt="Video Placeholder"
+          />
+        </Box>
+        <Box mt={10}>
+          <Text as="b" fontSize="xl">
+            {step2.title}
+          </Text>
+          <SimpleGrid
+            mt={6}
+            columns={3}
+            spacing={{ base: "10px", lg: "100px" }}
           >
-            Gas
-          </Button>
-          <Button
-            colorScheme="blue"
-            onClick={() => {
-              setSelectedFuel("Diesel");
-            }}
-          >
-            Diesel
-          </Button>
-          <Button
-            colorScheme="blue"
-            onClick={() => {
-              setSelectedFuel("E85");
-            }}
-          >
-            E85
-          </Button>
-        </SimpleGrid>
-      </Box>
-
-      {selectedFuel && (
-        <>
+            <Button
+              minW="60px"
+              maxW="120px"
+              colorScheme="blue"
+              onClick={() => {
+                setSelectedFuel("Gas");
+              }}
+            >
+              Gas
+            </Button>
+            <Button
+              minW="60px"
+              maxW="120px"
+              colorScheme="blue"
+              onClick={() => {
+                setSelectedFuel("Diesel");
+              }}
+            >
+              Diesel
+            </Button>
+            <Button
+              minW="60px"
+              maxW="120px"
+              colorScheme="blue"
+              onClick={() => {
+                setSelectedFuel("E85");
+              }}
+            >
+              E85
+            </Button>
+          </SimpleGrid>
+        </Box>
+        {selectedFuel && (
+          <>
+            <InstructionContent
+              title={title + " " + selectedFuel}
+              videoSource="https://via.placeholder.com/150"
+            >
+              <ListItem>{description1.step1}</ListItem>
+              <ListItem>{description1.step2}</ListItem>
+              <ListItem>{description1.step3}</ListItem>
+            </InstructionContent>
+            <Box mt={10}>
+              <Text as="b" fontSize="xl">
+                {step3.title + " " + selectedFuel}
+              </Text>
+              <SimpleGrid
+                mt={6}
+                columns={3}
+                spacing={{ base: "10px", lg: "100px" }}
+              >
+                <Button
+                  minW="60px"
+                  maxW="120px"
+                  whiteSpace={"normal"}
+                  colorScheme="blue"
+                  onClick={() => setSelectedPayment("Credit Card")}
+                >
+                  Credit Card
+                </Button>
+                <Button
+                  minW="60px"
+                  maxW="120px"
+                  whiteSpace={"normal"}
+                  colorScheme="blue"
+                  onClick={() => setSelectedPayment("Debit Card")}
+                >
+                  Debit Card
+                </Button>
+                <Button
+                  minWidth="60px"
+                  maxW="120px"
+                  whiteSpace={"normal"}
+                  colorScheme="blue"
+                  onClick={() => setSelectedPayment("Cash")}
+                >
+                  Cash
+                </Button>
+              </SimpleGrid>
+            </Box>
+          </>
+        )}
+        {selectedPayment && (
           <InstructionContent
-            title={title + " " + selectedFuel}
+            title={title + " " + selectedPayment}
             videoSource="https://via.placeholder.com/150"
           >
-            <ListItem>{description1.step1}</ListItem>
-            <ListItem>{description1.step2}</ListItem>
-            <ListItem>{description1.step3}</ListItem>
+            <ListItem>{description2.step1}</ListItem>
+            <ListItem>{description2.step2}</ListItem>
+            <ListItem>{description2.step3}</ListItem>
           </InstructionContent>
-          <Box mt={4}>
-            <Text as="b" fontSize="xl">
-              {step3.title + " " + selectedFuel}
-            </Text>
-            <SimpleGrid
-              mt={10}
-              columns={3}
-              spacing={{ base: "10px", lg: "100px" }}
-            >
-              <Button
-                minW="60px"
-                maxW="120px"
-                whiteSpace={"normal"}
-                colorScheme="blue"
-                onClick={() => setSelectedPayment("Credit Card")}
-              >
-                Credit Card
-              </Button>
-              <Button
-                minW="60px"
-                maxW="120px"
-                whiteSpace={"normal"}
-                colorScheme="blue"
-                onClick={() => setSelectedPayment("Debit Card")}
-              >
-                Debit Card
-              </Button>
-              <Button
-                minWidth="60px"
-                maxW="120px"
-                whiteSpace={"normal"}
-                colorScheme="blue"
-                onClick={() => setSelectedPayment("Cash")}
-              >
-                Cash
-              </Button>
-            </SimpleGrid>
-          </Box>
-        </>
-      )}
-
-      {selectedPayment && (
-        <InstructionContent
-          title={title + " " + selectedPayment}
-          videoSource="https://via.placeholder.com/150"
-        >
-          <ListItem>{description2.step1}</ListItem>
-          <ListItem>{description2.step2}</ListItem>
-          <ListItem>{description2.step3}</ListItem>
-        </InstructionContent>
-      )}
+        )}
+      </SimpleGrid>
     </VStack>
   );
 }
